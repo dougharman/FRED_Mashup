@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+    <link type="text/css" rel="stylesheet" href="FRED_Mashup.css">
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <script language="javascript" type="text/javascript" src="FRED_Mashup.js"></script>
+	<title>FRED Mashup</title>
+</head>
+
+<body>
+	<div class="center"> 
+        <h1>ECONOMIC RESEARCH</h1>
+        <br/>
+        <h1>St. Louis Federal Reserve Bank</h1>
+        <br/>
+        <h2>FRED<sup>&reg</sup> Economic Database</h2>
+    	<br/>
+    <div>
+        <div class="float_L">
+            <ul>
+                <iframe src="http://research.stlouisfed.org/fred-glance-widget.php" style="overflow: hidden; border: 1px solid #333333; width: 320px; height: 490px;" height="240" width="320" frameborder="0" scrolling="no">
+                </iframe>
+            </ul>
+        </div>
+        <div class="float_R">
+            <ul>
+                <li class="button1"><br/>Search for Economic Data Releases</li>
+                <li ><input id="search" type="text" placeholder="Search by Name"></li>
+            </ul>
+
+            <ul>
+                <li class="button2"><br/>Retrieve Economic Release</li>
+                <li ><input id="retrieve" type="text" placeholder="Retrieve by Series Identifier, e.g., DGS10"></li>
+            </ul>
+            <ul>
+                <li class="button3"><br/>Most Recent Economic Releases</li>
+                <li id="feed"></li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
