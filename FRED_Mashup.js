@@ -21,17 +21,12 @@
 
   google.setOnLoadCallback(initialize);
 
+var successFunc = function (resp) {
+/*  $('#output').html(data.contents);  */
+  console.log(resp);
+}
 
-var printError = function( req, status, err ) {
-  console.log( 'something went wrong', status, err );
-};   
-
-$.ajax({
-  url: "http://api.stlouisfed.org/fred/release?release_id=53&api_key=e19770641c3d3ed9c68f7cd06544bcfb&file_type=json" + "&callback=?",
-  dataType: 'json',
-  
-
-  success: function( data ) {
+/*  success: function( data ) {
     var items = [];
     $.each( data, function( key, val ) {
       items.push( "<li id='" + key + "'>" + val + "</li>" );
@@ -42,10 +37,22 @@ $.ajax({
       html: items.join( "" )
     }).appendTo( "body" );
   },
-  error: printError
+  error: printError  */
 
+var printError = function( req, status, err ) {
+  console.log( 'something went wrong', status, err );
+};   
+
+$.ajax({
+  url: "http://anyorigin.com/get?url=http%3A//api.stlouisfed.org/fred/release%3Frelease_id%3D53%26api_key%3De19770641c3d3ed9c68f7cd06544bcfb%26file_type%3Djson%26callback%3D%3F&callback=?",
+  dataType: "json",
+  success: successFunc,
+  error: printError
 });
 
+
+/*$.getJSON("http://anyorigin.com/get?url=http%3A//api.stlouisfed.org/fred/release%3Frelease_id%3D53%26api_key%3De19770641c3d3ed9c68f7cd06544bcfb%26file_type%3Djson%26callback%3D%3F&callback=?");
+  console.log(data.contents);  */
 
 $(document).ready(function(){
 
