@@ -1,5 +1,5 @@
 
-
+/*
 
   google.load("feeds", "1");
 
@@ -22,10 +22,10 @@
   google.setOnLoadCallback(initialize);
 
 var successFunc = function (resp) {
-/*  $('#output').html(data.contents);  */
+ $('#output').html(data.contents);
   console.log(resp);
 }
-
+*/
 /*  success: function( data ) {
     var items = [];
     $.each( data, function( key, val ) {
@@ -39,13 +39,15 @@ var successFunc = function (resp) {
   },
   error: printError  */
 
+/*
 var successFunc = function(resp) {
   console.log(resp.contents);
 }
 
 var printError = function( req, status, err ) {
   console.log( 'something went wrong', status, err );
-};   
+};
+*/   
 /*
 $.ajax({
   url: "http://anyorigin.com/get?url=http%3A//api.stlouisfed.org/fred/release%3Frelease_id%3D53%26api_key%3De19770641c3d3ed9c68f7cd06544bcfb%26file_type%3Djson%26callback%3D%3F&callback=?",
@@ -59,34 +61,22 @@ $.ajax({
 
 $(document).ready(function(){
 
-
-
   $(".button2, #retrieve").keydown(function (event) {
   if (event.which == 13) {
   event.preventDefault();
   }
+});
 // Initiate the request!
  
-$.getJSON("http://anyorigin.com/get?url=http%3A//api.stlouisfed.org/fred/release%3Frelease_id%3D53%26api_key%3De19770641c3d3ed9c68f7cd06544bcfb%26file_type%3Djson%26callback%3D%3F&callback=?",
-  function(resp) {
-  }),
-  alert(successFunc);
-        alert(printError);
-  }); 
-  
+ $.ajax({
+  url:'http://anyorigin.com/get?url=http%3A//api.stlouisfed.org/fred/release%3Frelease_id%3D53%26api_key%3De19770641c3d3ed9c68f7cd06544bcfb%26file_type%3Djson%26callback%3D%3F&callback=?', 
+    dataType: "json",
+    success: function(data){$('#output').html(data.contents)}
+});
 
 
   $(".button2, #retrieve").click(function () {
     event.preventDefault();
-  $.getJSON("http://anyorigin.com/get?url=http%3A//api.stlouisfed.org/fred/release%3Frelease_id%3D53%26api_key%3De19770641c3d3ed9c68f7cd06544bcfb%26file_type%3Djson%26callback%3D%3F&callback=?",
-  function(resp) {
-  }),
-  alert(successFunc);
-  alert(printError);
-
-
   });
 
-// Initiate the request!
- 
 });
