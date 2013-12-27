@@ -67,7 +67,7 @@ $(document).ready(function(){
   }
 });
 // Initiate the request!
- 
+
  $.ajax({
   url:'http://anyorigin.com/get?url=http%3A//api.stlouisfed.org/fred/release%3Frelease_id%3D53%26api_key%3De19770641c3d3ed9c68f7cd06544bcfb%26file_type%3Djson%26callback%3D%3F&callback=?', 
     dataType: "json",
@@ -79,4 +79,7 @@ $(document).ready(function(){
     event.preventDefault();
   });
 
+$.getJSON('http://anyorigin.com/get?url=http%3A//api.stlouisfed.org/fred/release%3Frelease_id%3D53%26api_key%3De19770641c3d3ed9c68f7cd06544bcfb%26file_type%3Djson%26callback%3D%3F&callback=?', function(data){
+  $('#output').html(data.contents);
+});
 });
