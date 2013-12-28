@@ -1,17 +1,11 @@
 <!DOCTYPE html>
 <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
-<!--    <meta charset="utf-8">  -->
     <link type="text/css" rel="stylesheet" href="FRED_Mashup.css">
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-    <mime-mapping>    
-            <extension>js</extension>        
-            <mime-type>application/javascript</mime-type>        
-    </mime-mapping>
     <script language="javascript" content-type="application/javascript" src="FRED_Mashup.js"></script>
-     <script language="javascript" type="text/javascript" src="FRED_Mashup.js"></script>
 	<title>FRED Mashup</title>
 </head>
 
@@ -33,23 +27,19 @@
         <div class="float_R">
             <ul>
                 <li class="button1"><br/>Search for Economic Data Releases</li>
-                <li><input id="search" type="text" placeholder="Search by Name"></li>
+                <li><input id="search" type="text" placeholder='Search by Name, e.g., "Consumer Price Index"'></li>
                
             </ul>
             <ul>
                 <li class="button2"><br/>Retrieve Economic Release</li>
-                <li><input id="retrieve" type="text" placeholder="Retrieve by Series Identifier, e.g., DGS10"></li>
+                <li><input id="retrieve" type="text" placeholder='Retrieve by Series Identifier, e.g., DGS10'></li>
             </ul>
             <ul>
-                <li class="my-new-list"><span></span></li>
-            </ul>
-            <ul>
-                <li class="button3"><br/>Most Recent Economic Releases</li>
+                <li class="button3"><br/>Selected FRED Economic Data Updates</li>
                 <li id="feed"></li>
             </ul>
         </div>
     </div>
-    <div id="output"><span></span></div>
 </body>
 
 </html>
