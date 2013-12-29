@@ -1,4 +1,4 @@
-/*google.load("feeds", "1");
+google.load("feeds", "1");
 
 function initialize() {
   var feed = new google.feeds.Feed("http://feeds.feedburner.com/stlfed-fred-select");
@@ -18,12 +18,13 @@ function initialize() {
 
 google.setOnLoadCallback(initialize);
 
-*/
 
+// Designed to search for an economic data series by name, e.g., consumer price index
 function search(name) {
   var string_1 = name;
   console.log(string_1);
-  
+ 
+
   $.ajax({
   url:'http://anyorigin.com/get?url=http%3A//api.stlouisfed.org/fred/series/search%3Fsearch_text%3D' + string_1 + '%26api_key%3De19770641c3d3ed9c68f7cd06544bcfb%26file_type%3Djson&callback=?', 
     dataType: "json",
@@ -67,42 +68,7 @@ function search(name) {
   });
 }
 
-
-
-
-/*function search(name) {
-  var string_1 = name;
-  console.log(string_1);
-
- $.getJSON('http://anyorigin.com/get?url=http%3A//api.stlouisfed.org/fred/series/search%3Fsearch_text%3D' + string_1 + '%26api_key%3De19770641c3d3ed9c68f7cd06544bcfb%26file_type%3Djson&callback=?', 
-    function(data){
-      $("#searchBox_1").val(data.contents.seriess[0].id);
-      console.log(id);
-      console.log(data.contents.seriess[0].id);     // "seriess" with two ss' is correct  I emailed the St. Louis Fed about the error.
-      console.log(data.contents.seriess.slice(0,5)); 
-
-      $( "li" ).each(function( index ) {
-  console.log( index + ": " + $( this ).text() );
-});
-
-$.getJSON('http://anyorigin.com/get?url=http%3A//api.stlouisfed.org/fred/series/search%3Fsearch_text%3D' + string_1 + '%26api_key%3De19770641c3d3ed9c68f7cd06544bcfb%26file_type%3Djson&callback=?',
-  function(data){
-      $("#searchBox_1").val(data.contents.seriess[0].id);
-      console.log(data.contents.seriess[0].id);     // "seriess" with two ss' is correct  I emailed the St. Louis Fed about the error.
-      console.log(data.contents.seriess.slice(0,5)); 
-
-      
-      console.log(data.contents.seriess.slice(0,5) + ": " + $( this ).text() );
-      
-      var result = $(document).html(data.contents.seriess.slice(0,5));
-      $.each( result, function( key, value ) {
-        console.log( key + ": " + value );
-      });
-
-  }
-  );
-}
-
+// Designed to retrieve an economic time series press release by time series identifier (and open press release in a new tab / window)
 function retrieve(releaseName) {
   var string_2 = releaseName;
   console.log(string_2);
@@ -116,16 +82,8 @@ function retrieve(releaseName) {
   );
 }
 
-/*$.getJSON('http://anyorigin.com/get?url=http%3A//api.stlouisfed.org/fred/series/search%3Fsearch_text%3Dconsumer+price+index%26api_key%3De19770641c3d3ed9c68f7cd06544bcfb%26file_type%3Djson&callback=?', 
-    function(data){
-      console.log(data.contents.seriess[0].id);
-      console.log(data.contents.seriess[0].title);  
-    } 
-); */
-
 
 $(document).ready(function() {
-
   $("#searchBox_1").keydown(function (event) {
     if (event.which == 13) {          
       if (!$.trim($("#searchBox_1").val())) {
@@ -140,12 +98,24 @@ $(document).ready(function() {
   $("#retrieveBox").keydown(function (event) {
     if (event.which == 13) {          
       if (!$.trim($("#retrieveBox").val())) {
-              alert("Please enter the economic data series identifier, e.g., 53");
+              alert("Please enter an economic data series identifier, e.g., 53");
           } else {
               retrieve($("#retrieveBox").val());
               $("#retrieveBox").val("");
           }
     }
+  });
+
+  $(".button_4").keydown(function (event) {
+    if (event.which == 13) { 
+      $("#searchBox_1").val("");
+      $("#retrieveBox").val("");
+    }
+  });
+
+  $(".button_4").click(function (event) {
+      $("#searchBox_1").val("");
+      $("#retrieveBox").val("");
   });
 
 });
