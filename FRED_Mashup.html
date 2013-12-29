@@ -26,16 +26,31 @@
         </div>
         <div class="float_R">
             <ul>
-                <li class="button1"><br/>Search for Economic Data Releases</li>
-                <li><input id="search" type="text" placeholder='Search by Name, e.g., "Consumer Price Index"'></li>
-               
+                <li class="button_1"><br/>Search for Economic Data Releases</li>
+                <li>
+                    <input id="searchBox_1" type="text" placeholder='Search by Name, e.g., "Consumer Price Index"'><span></span>
+<!--                    <li id="output_0" class="hide"></li>
+                    <li id="output_1" class="hide"></li>
+                    <li id="output_2" class="hide"></li>
+                    <li id="output_3" class="hide"></li>
+                    <li id="output_4" class="hide"></li>
+-->
+ <!-- I wanted to be able to select the type of output using radio buttons; however, I couldn't get the following to format or position correctly
+                    <br/>
+                    <input id="searchBox_2" type="text" placeholder="Return Series Id and Description">   
+                    <input id="searchBox_3" type="text" placeholder="Return Full Record">   -->
+                </li>
             </ul>
+            <br/>
+            <br/>
             <ul>
-                <li class="button2"><br/>Retrieve Economic Release</li>
-                <li><input id="retrieve" type="text" placeholder='Retrieve by Series Identifier, e.g., DGS10'></li>
+                <li class="button_2"><br/>Retrieve Economic Press Release</li>
+                <li><input id="retrieveBox" type="text" placeholder='Retrieve by Press Release Series Identifier, e.g., DGS10'><span></span></li>
             </ul>
+            <br/>
+            <br/>
             <ul>
-                <li class="button3"><br/>Selected FRED Economic Data Updates</li>
+                <li class="button_3"><br/>Selected FRED Economic Data Updates</li>
                 <li id="feed"></li>
             </ul>
         </div>
