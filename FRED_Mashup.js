@@ -122,6 +122,21 @@ $(document).ready(function() {
       $("#retrieveBox").val("");
   });
 
+$.getJSON('http://anyorigin.com/get?url=api.stlouisfed.org/fred/release%3Frelease_id%3D53%26api_key%3De19770641c3d3ed9c68f7cd06544bcfb%26file_type%3Djson%26callback&callback=?',
+        function(data){
+        console.log(data.contents.releases[0].id);
+    }
+    );
+
+$.getJSON('http://anyorigin.com/get?url=http%3A//api.stlouisfed.org/fred/series/release%3Fseries_id%3DIRA%26api_key%3De19770641c3d3ed9c68f7cd06544bcfb%26file_type%3Djson&callback=?', 
+      function(data){
+      console.log(data.contents);
+      console.log(data.contents.releases[0].link);
+    }
+    );
+
+
+
 });
 
 
