@@ -19,7 +19,7 @@ function initialize() {
 google.setOnLoadCallback(initialize);
 
 
-// Designed to search for an economic data series by name, e.g., consumer price index
+/* Designed to search for an economic data series by name, e.g., consumer price index */
 function search(name) {
   var string_1 = name;
   console.log(string_1);
@@ -29,11 +29,13 @@ function search(name) {
   url:'http://anyorigin.com/get?url=http%3A//api.stlouisfed.org/fred/series/search%3Fsearch_text%3D' + string_1 + '%26api_key%3De19770641c3d3ed9c68f7cd06544bcfb%26file_type%3Djson&callback=?', 
     dataType: "json",
     success: function(data){
-//  "seriess" with two ss' is correct  I emailed the St. Louis Fed about the error.
-//  There are more than 1000 objects in the consumer price index array, so I limited the output to 5 objects (economic data time series)
+/*  "seriess" with two ss' is correct  I emailed the St. Louis Fed about the error.
+    There are more than 1000 objects in the consumer price index array, so I limited the output to 5 objects (economic data time series)  */
+      console.log(data);
+      console.log(data.contents);
       console.log(data.contents.seriess.slice(0,5));      
-//  Can't figure out how to access more than one deeply nested element of an array on a single for loop pass, so here's my ugly workaround   
-      var arr = $(data.contents.seriess[0,5]);
+/*  Can't figure out how to access more than one deeply nested element of an array on a single for loop pass, so here's my ugly workaround   */
+/*      var arr = $(data.contents.seriess[0,5]);  */
      
       var identifier = [];
       var title =[];
@@ -49,34 +51,36 @@ function search(name) {
       title.push(data.contents.seriess[4].title);
       
       console.log(identifier);
-      console.log(title)
+      console.log(title);
 
-//  Also can't figure out how to put more than one line in an input box.  This didn't work.
-//    $("#searchBox_1").val(((identifier[0]) + ": " + (title[0])) \n ((identifier[1]) + ": " + (title[1])) \n ((identifier[2]) + ": " + (title[2])) \n ((identifier[3]) + ": " + (title[3])) \n ((identifier[4]) + ": " + (title[4])));
-//  Ugly work-around: hide input box, add multiple output boxes
-//  I tried it - and killed it.  It screwed up my formatting and worse, would have made me add a re-set (which I don't want).
-//      $("#search_1").addClass("hide");
-//  I'm going to return the first result and call it quits!
+/*  Also can't figure out how to put more than one line in an input box.  This didn't work.
+    $("#searchBox_1").val(((identifier[0]) + ": " + (title[0])) \n ((identifier[1]) + ": " + (title[1])) \n ((identifier[2]) + ": " + (title[2])) \n ((identifier[3]) + ": " + (title[3])) \n ((identifier[4]) + ": " + (title[4])));
+    Ugly work-around: hide input box, add multiple output boxes
+    I tried it - and killed it.  It screwed up my formatting and worse, would have made me add a re-set (which I don't want).
+    $("#search_1").addClass("hide");
+    I'm going to return the first result and call it quits!   */
       $("#searchBox_1").val((identifier[0]) + ": " + (title[0]));
-//      $("#output_1").removeClass("hide").val((identifier[1]) + ": " + (title[1]));
-//      $("#output_2").removeClass("hide").val((identifier[2]) + ": " + (title[2]));
-//      $("#output_3").removeClass("hide").val((identifier[3]) + ": " + (title[3]));
-//      $("#output_4").removeClass("hide").val((identifier[4]) + ": " + (title[4]));
+/*    $("#output_1").removeClass("hide").val((identifier[1]) + ": " + (title[1]));
+      $("#output_2").removeClass("hide").val((identifier[2]) + ": " + (title[2]));
+      $("#output_3").removeClass("hide").val((identifier[3]) + ": " + (title[3]));
+      $("#output_4").removeClass("hide").val((identifier[4]) + ": " + (title[4]));    */
      
 
     }
   });
 }
 
-// Designed to retrieve an economic time series press release by time series identifier (and open press release in a new tab / window)
+/* Designed to retrieve an economic time series press release by time series identifier (and open press release in a new tab / window) */
 function retrieve(releaseName) {
   var string_2 = releaseName;
   console.log(string_2);
 
   $.getJSON('http://anyorigin.com/get?url=http%3A//api.stlouisfed.org/fred/series/release%3Fseries_id%3D' + string_2 + '%26api_key%3De19770641c3d3ed9c68f7cd06544bcfb%26file_type%3Djson&callback=?', 
     function(data){
+      console.log(data);
+      console.log(data.contents);
       $("#retrieveBox").val(data.contents.releases[0].link);
-      window.open(data.contents.releases[0].link)
+      window.open(data.contents.releases[0].link);
       console.log(data.contents.releases[0].link);  
     }
   );
