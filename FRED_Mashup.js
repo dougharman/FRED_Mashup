@@ -31,7 +31,7 @@ function search(name) {
     success: function(data){
 /*  "seriess" with two ss' is correct  I emailed the St. Louis Fed about the error.
     There are more than 1000 objects in the consumer price index array, so I limited the output to 5 objects (economic data time series)  */
-      console.log(data);
+
       console.log(data.contents);
       console.log(data.contents.seriess.slice(0,5));      
 /*  Can't figure out how to access more than one deeply nested element of an array on a single for loop pass, so here's my ugly workaround   */
@@ -121,21 +121,6 @@ $(document).ready(function() {
       $("#searchBox_1").val("");
       $("#retrieveBox").val("");
   });
-
-$.getJSON('http://anyorigin.com/get?url=api.stlouisfed.org/fred/release%3Frelease_id%3D53%26api_key%3De19770641c3d3ed9c68f7cd06544bcfb%26file_type%3Djson%26callback&callback=?',
-        function(data){
-        console.log(data.contents.releases[0].id);
-    }
-    );
-
-$.getJSON('http://anyorigin.com/get?url=http%3A//api.stlouisfed.org/fred/series/release%3Fseries_id%3DIRA%26api_key%3De19770641c3d3ed9c68f7cd06544bcfb%26file_type%3Djson&callback=?', 
-      function(data){
-      console.log(data.contents);
-      console.log(data.contents.releases[0].link);
-    }
-    );
-
-
 
 });
 
